@@ -1,6 +1,5 @@
 #importando o documento Tree
-from models import mongoOP;
-
+# -*- coding: utf-8 -*-
 def createTree():
     pass
     # TODO

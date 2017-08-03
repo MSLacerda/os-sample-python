@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from pymongo import MongoClient
 import json
 
@@ -17,10 +19,9 @@ class OpMongoDB():
             try:
                  inserted_id = self.collection.insert_one(dados).inserted_id
                  response = {
-                     "error": false,
+                     "error": False,
                      inserted_id: inserted_id
                  }
-
         else:
             self.collection.update(dados)
 
