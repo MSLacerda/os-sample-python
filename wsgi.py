@@ -1,6 +1,5 @@
-from flask import Flask
-import routes.routers
+from routes import routers
 
 
 if __name__ == "__main__":
-    application.run()
+    routers.application.run()

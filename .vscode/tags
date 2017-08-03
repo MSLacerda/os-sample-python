@@ -1,0 +1,17 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+__init__.py	../controllers/__init__.py	1;"	kind:file	line:1
+__init__.py	../routes/__init__.py	1;"	kind:file	line:1
+application	../routes/routers.py	/^application = Flask(__name__)$/;"	kind:variable	line:3
+config.py	../config.py	1;"	kind:file	line:1
+forwarded_allow_ips	../config.py	/^forwarded_allow_ips = '*'$/;"	kind:variable	line:6
+hello	../routes/routers.py	/^def hello():$/;"	kind:function	line:6
+routers.py	../routes/routers.py	1;"	kind:file	line:1
+secure_scheme_headers	../config.py	/^secure_scheme_headers = { 'X-Forwarded-Proto': 'https' }$/;"	kind:variable	line:7
+threads	../config.py	/^threads = int(os.environ.get('GUNICORN_THREADS', '1'))$/;"	kind:variable	line:4
+workers	../config.py	/^workers = int(os.environ.get('GUNICORN_PROCESSES', '3'))$/;"	kind:variable	line:3
+wsgi.py	../wsgi.py	1;"	kind:file	line:1

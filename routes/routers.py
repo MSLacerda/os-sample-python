@@ -1,7 +1,7 @@
 from flask import Flask
+from controllers import nothing
 
 application = Flask(__name__)
 
 @application.route("/")
-def hello():
-    return "Hello World!"
+nothing.hello()
