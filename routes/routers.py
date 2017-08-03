@@ -6,7 +6,10 @@ from flask import Flask
 # Importando controller de teste
 from controllers import nothing
 
+
+
 # Flass app
+
 application = Flask(__name__)
 
 # Rota index para teste
