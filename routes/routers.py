@@ -3,5 +3,8 @@ from controllers import nothing
 
 application = Flask(__name__)
 
-@application.route("/")
-nothing.hello()
+
+@application.route("/index")
+def index():
+    return nothing.hello()
+    
