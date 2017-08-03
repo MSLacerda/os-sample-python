@@ -17,4 +17,5 @@ application = Flask(__name__)
 # Função da rota index
 def index(): 
     return nothing.hello()
-    
+
+
