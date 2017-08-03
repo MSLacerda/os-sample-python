@@ -1,6 +1,7 @@
 from flask import Flask
 from controllers import nothing
 
+
 application = Flask(__name__)
 
 
