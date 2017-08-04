@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from routes import routers
+from routes import routers 
+
+application = routers.application;
 
 
 if __name__ == "__main__":
-    routers.application.run()
+    application.run()
