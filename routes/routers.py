@@ -20,7 +20,7 @@ def ctrlTree():
         pass  # TODO
     elif (request.method == 'GET'):
         res = tree.listTrees()
-        return res.data
+        return json.dumps(res)
     elif (request.method == 'DELETE'):
         pass  # TODO
 
