@@ -5,6 +5,7 @@ from flask import Flask, request
 
 # Importando controller de teste
 from controllers import tree
+import json
 
 # Flass app
 application = Flask(__name__)
@@ -18,7 +19,8 @@ def ctrlTree():
     if (request.method == 'POST'):
         pass  # TODO
     elif (request.method == 'GET'):
-        return "This router works :)"
+        res = tree.listTrees()
+        return res.data
     elif (request.method == 'DELETE'):
         pass  # TODO
 

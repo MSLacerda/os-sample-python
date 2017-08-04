@@ -2,6 +2,8 @@
 # Importa mongocliente para realizar a conexão com bd do mongo criado
 from pymongo import MongoClient
 import json
+import sys
+from bson.json_util import dumps
 
 
 # Classe definida para disponibilizar operações com o mongodb
@@ -30,7 +32,7 @@ class OpMongoDB():
                 inserted_id = self.collection.insert_one(dados).inserted_id
                 response = {
                     "Error": False,
-                    "Menssage": "Objeto adicionado com sucesso!"
+                    "Menssage": "Objeto adicionado com sucesso!",
                     "id": inserted_id
                 }
             except:
@@ -58,7 +60,7 @@ class OpMongoDB():
             except:
                 response = {
                     "error": True,
-                    "Menssage:" "Error ao processar servicço"
+                    "Menssage": "Error ao processar servicço"
                 }
 
             #--------------------------
@@ -74,8 +76,27 @@ class OpMongoDB():
         pass
 
     def list(self):
-        # TODO
-        pass
+        response = {}
+        try:
+            data = self.collection.find()
+            if (data):
+                response = {
+                    "Error": False,
+                    "Data": dumps(data)
+                }
+            else:
+                response = {
+                    "Error": True,
+                    "Menssage": "Erro ao acessar serviço"
+                }
+        except Exception as e:
+            print e
+            response = {
+                "Error": True,
+                "Menssage": "Error no serviço "
+            }
+        
+        return dumps(response)
 
     def findById(self, id):
         # TODO
