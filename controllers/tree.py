@@ -1,6 +1,7 @@
 #importando o documento Tree
 # -*- coding: utf-8 -*-
 from models import mongoOP
+import json
 
 def createTree():
     pass
@@ -12,7 +13,7 @@ def deleteTree():
     
 def listTrees():
     mg = mongoOP.OpMongoDB('forestbd','trees')
-    return mg.list()
+    return json.dumps(mg.list())
     
 def getTree():
     pass

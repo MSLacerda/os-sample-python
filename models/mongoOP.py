@@ -44,7 +44,7 @@ class OpMongoDB():
             #--------------------------
             # Resposta do servidor
             #--------------------------
-            return json.dumps(response)
+            return dumps(response)
             #-------------------------- 
 
         else:
@@ -66,7 +66,7 @@ class OpMongoDB():
             #--------------------------
             # Resposta do servidor
             #--------------------------
-            return json.dumps(response)
+            return response
             #-------------------------- 
 
 
@@ -96,7 +96,7 @@ class OpMongoDB():
                 "Menssage": "Error no serviço "
             }
         
-        return dumps(response)
+        return response
 
     def findById(self, id):
         # TODO
