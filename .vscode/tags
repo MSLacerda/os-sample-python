@@ -4,39 +4,44 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-OpMongoDB	../models/mongoOP.py	/^class OpMongoDB():$/;"	kind:class	line:10
+OpMongoDB	../models/mongoOP.py	/^class OpMongoDB():$/;"	kind:class	line:12
 SIZE	../models/mongoModel.py	/^SIZE = (('S', 'Small'),$/;"	kind:variable	line:6
 SurveyResponse	../models/mongoModel.py	/^class SurveyResponse(Document):$/;"	kind:class	line:26
 User	../models/mongoModel.py	/^class User(Document):$/;"	kind:class	line:12
-__init__	../models/mongoOP.py	/^    def __init__(self, db, collection):$/;"	kind:member	line:14
+__init__	../models/mongoOP.py	/^    def __init__(self, db, collection):$/;"	kind:member	line:16
 __init__.py	../controllers/__init__.py	1;"	kind:file	line:1
 __init__.py	../models/__init__.py	1;"	kind:file	line:1
 __init__.py	../routes/__init__.py	1;"	kind:file	line:1
-application	../routes/routers.py	/^application = Flask(__name__)$/;"	kind:variable	line:10
-client	../models/mongoOP.py	/^    client = MongoClient('mongodb:\/\/mslacerda:chaos456@ds015915.mlab.com:15915\/forestbd')$/;"	kind:variable	line:11
+application	../routes/routers.py	/^application = Flask(__name__)$/;"	kind:variable	line:11
+application	../wsgi.py	/^application = routers.application;$/;"	kind:variable	line:5
+client	../models/mongoOP.py	/^    client = MongoClient('mongodb:\/\/mslacerda:chaos456@ds015915.mlab.com:15915\/forestbd')$/;"	kind:variable	line:13
 config.py	../config.py	1;"	kind:file	line:1
 content	../models/mongoModel.py	/^    content = StringField()$/;"	kind:variable	line:21
-createTree	../controllers/tree.py	/^def createTree():$/;"	kind:function	line:3
-ctrlAct	../routes/routers.py	/^def ctrlAct():$/;"	kind:function	line:35
-ctrlTree	../routes/routers.py	/^def ctrlTree():$/;"	kind:function	line:17
-ctrlUser	../routes/routers.py	/^def ctrlUser():$/;"	kind:function	line:26
+createTree	../controllers/tree.py	/^def createTree():$/;"	kind:function	line:6
+createUser	../controllers/user.py	/^def createUser():$/;"	kind:function	line:3
+ctrlAct	../routes/routers.py	/^def ctrlAct():$/;"	kind:function	line:37
+ctrlTree	../routes/routers.py	/^def ctrlTree():$/;"	kind:function	line:18
+ctrlUser	../routes/routers.py	/^def ctrlUser():$/;"	kind:function	line:28
 date	../models/mongoModel.py	/^    date = DateTimeField()$/;"	kind:variable	line:27
 date_modified	../models/mongoModel.py	/^    date_modified = DateTimeField(default=datetime.datetime.now)$/;"	kind:variable	line:15
-deleteTree	../controllers/tree.py	/^def deleteTree():$/;"	kind:function	line:7
-findById	../models/mongoOP.py	/^    def findById(self, id):$/;"	kind:member	line:80
+deleteTree	../controllers/tree.py	/^def deleteTree():$/;"	kind:function	line:10
+deleteUser	../controllers/user.py	/^def deleteUser():$/;"	kind:function	line:7
+findById	../models/mongoOP.py	/^    def findById(self, id):$/;"	kind:member	line:101
 forwarded_allow_ips	../config.py	/^forwarded_allow_ips = '*'$/;"	kind:variable	line:6
-getTree	../controllers/tree.py	/^def getTree():$/;"	kind:function	line:15
+getTree	../controllers/tree.py	/^def getTree():$/;"	kind:function	line:18
+getUser	../controllers/user.py	/^def getUser():$/;"	kind:function	line:15
 hello	../controllers/nothing.py	/^def hello():$/;"	kind:function	line:3
-list	../models/mongoOP.py	/^    def list(self):$/;"	kind:member	line:76
-listTTrees	../controllers/tree.py	/^def listTTrees():$/;"	kind:function	line:11
+list	../models/mongoOP.py	/^    def list(self):$/;"	kind:member	line:78
+listTrees	../controllers/tree.py	/^def listTrees():$/;"	kind:function	line:14
+listUsers	../controllers/user.py	/^def listUsers():$/;"	kind:function	line:11
 meta	../models/mongoModel.py	/^    meta = {'db_alias': 'user-db'}$/;"	kind:variable	line:23
 mongoModel.py	../models/mongoModel.py	1;"	kind:file	line:1
 mongoOP.py	../models/mongoOP.py	1;"	kind:file	line:1
 name	../models/mongoModel.py	/^    name = StringField()$/;"	kind:variable	line:13
 nothing.py	../controllers/nothing.py	1;"	kind:file	line:1
-remove	../models/mongoOP.py	/^    def remove(self, id):$/;"	kind:member	line:72
+remove	../models/mongoOP.py	/^    def remove(self, id):$/;"	kind:member	line:74
 routers.py	../routes/routers.py	1;"	kind:file	line:1
-save	../models/mongoOP.py	/^    def save(self, dados):$/;"	kind:member	line:19
+save	../models/mongoOP.py	/^    def save(self, dados):$/;"	kind:member	line:21
 secure_scheme_headers	../config.py	/^secure_scheme_headers = { 'X-Forwarded-Proto': 'https' }$/;"	kind:variable	line:7
 size	../models/mongoModel.py	/^    size = StringField(max_length=3, choices=SIZE)$/;"	kind:variable	line:17
 tags	../models/mongoModel.py	/^    tags = ListField(StringField(max_length=50))$/;"	kind:variable	line:19

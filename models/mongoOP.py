@@ -48,7 +48,7 @@ class OpMongoDB():
             #-------------------------- 
 
         else:
-            # Caso não exista id é feixo uma atualização com base
+            # Caso não exista id é feito uma atualização com base
             # no id recebido e mais uma vez com segurança que os dados 
             # sejam atualizados
             try:
