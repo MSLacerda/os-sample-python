@@ -13,15 +13,12 @@ class User(Document):
     name = StringField()
     title = StringField(max_length=200, required=True)
     date_modified = DateTimeField(default=datetime.datetime.now)
-
     size = StringField(max_length=3, choices=SIZE)
 
     tags = ListField(StringField(max_length=50))
-
     content = StringField()
 
     meta = {'db_alias': 'user-db'}
-
 
 class SurveyResponse(Document):
     date = DateTimeField()
