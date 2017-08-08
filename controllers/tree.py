@@ -1,11 +1,11 @@
 #importando o documento Tree
 # -*- coding: utf-8 -*-
 from models import mongoOP
-import json
+from bson.json_util import dumps
 
-def createTree():
-    pass
-    # TODO
+def createTree(data):
+    mg = mongoOP.OpMongoDB('forestbd', 'trees')
+    return dumps(mg.save(data))
     
 def deleteTree():
     pass
@@ -13,7 +13,7 @@ def deleteTree():
     
 def listTrees():
     mg = mongoOP.OpMongoDB('forestbd','trees')
-    return json.dumps(mg.list())
+    return dumps(mg.list())
     
 def getTree():
     pass
