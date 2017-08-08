@@ -1,32 +1,36 @@
 from mongoengine import *
 import datetime
 
-connect(host='mongodb://mslacerda:chaos456@ds015915.mlab.com:15915/forestbd')
+# connect(host='mongodb://mslacerda:chaos456@ds015915.mlab.com:15915/forestbd')
 
-SIZE = (('S', 'Small'),
-        ('M', 'Medium'),
-        ('L', 'Large'),
-        ('XL', 'Extra Large'),
-        ('XXL', 'Extra Extra Large'))
+connect('proj', host='localhost', port=27017)
 
-class User(Document):
-    name = StringField()
-    title = StringField(max_length=200, required=True)
-    date_modified = DateTimeField(default=datetime.datetime.now)
-    size = StringField(max_length=3, choices=SIZE)
-
-    tags = ListField(StringField(max_length=50))
-    content = StringField()
-
-    meta = {'db_alias': 'user-db'}
-
-class SurveyResponse(Document):
-    date = DateTimeField()
-    user = ReferenceField(User)
+class Loc(Document):
+    lat = StringField(unique=False, required=True)
+    lng = StringField(unique=False, required=True)
 
 
-User(name='test').save()  # Saves in the default db
+class Tree(Document):
+    nome_pop = StringField(unique=False, required=True)
+    nome_cie = StringField(unique=False, required=True)
+    familia =  StringField(unique=False, required=False)
+    categoria= StringField(unique=False, required=False)
+    origem = StringField(unique=False, required=False)
+    clima = StringField(unique=False, required=False)
+    luminosidade = StringField(unique=False, required=False)
+    altura = StringField(unique=False, required=False)
+    info = StringField(unique=False, required=False)
+    tags = ListField( ReferenceField(Loc) )
 
+
+    # meta = {'db_alias': 'user-db'}
+
+
+
+
+Tree(nome_pop="nome", nome_cie="oiii").save()  # Saves in the default d
+va = Tree.objects()
+print (va.nome_pop)
 
 # with switch_db(User, 'archive-user-db') as User:
 #     User(name='Ross').save()  # Saves the 'archive-user-db'
