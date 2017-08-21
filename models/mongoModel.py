@@ -3,7 +3,7 @@ import datetime
 
 # connect(host='mongodb://mslacerda:chaos456@ds015915.mlab.com:15915/forestbd')
 
-connect('proj', host='localhost', port=27017)
+connect('proj', host='mongodb://mslacerda:chaos456@ds015915.mlab.com:15915/forestbd', port=15915)
 
 class Loc(Document):
     lat = StringField(unique=False, required=True)
