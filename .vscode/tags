@@ -4,52 +4,55 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Loc	../models/mongoModel.py	/^class Loc(Document):$/;"	kind:class	line:8
 OpMongoDB	../models/mongoOP.py	/^class OpMongoDB():$/;"	kind:class	line:12
-SIZE	../models/mongoModel.py	/^SIZE = (('S', 'Small'),$/;"	kind:variable	line:6
-SurveyResponse	../models/mongoModel.py	/^class SurveyResponse(Document):$/;"	kind:class	line:23
-User	../models/mongoModel.py	/^class User(Document):$/;"	kind:class	line:12
+Tree	../models/mongoModel.py	/^class Tree(Document):$/;"	kind:class	line:13
 __init__	../models/mongoOP.py	/^    def __init__(self, db, collection):$/;"	kind:member	line:16
 __init__.py	../controllers/__init__.py	1;"	kind:file	line:1
 __init__.py	../models/__init__.py	1;"	kind:file	line:1
 __init__.py	../routes/__init__.py	1;"	kind:file	line:1
+altura	../models/mongoModel.py	/^    altura = StringField(unique=False, required=False)$/;"	kind:variable	line:21
 application	../routes/routers.py	/^application = Flask(__name__)$/;"	kind:variable	line:11
 application	../wsgi.py	/^application = routers.application;$/;"	kind:variable	line:6
+categoria	../models/mongoModel.py	/^    categoria= StringField(unique=False, required=False)$/;"	kind:variable	line:17
 client	../models/mongoOP.py	/^    client = MongoClient('mongodb:\/\/mslacerda:chaos456@ds015915.mlab.com:15915\/forestbd')$/;"	kind:variable	line:13
+clima	../models/mongoModel.py	/^    clima = StringField(unique=False, required=False)$/;"	kind:variable	line:19
 config.py	../config.py	1;"	kind:file	line:1
-content	../models/mongoModel.py	/^    content = StringField()$/;"	kind:variable	line:19
-createTree	../controllers/tree.py	/^def createTree(data):$/;"	kind:function	line:6
+createTree	../controllers/tree.py	/^def createTree(data):$/;"	kind:function	line:7
 createUser	../controllers/user.py	/^def createUser():$/;"	kind:function	line:3
 ctrlAct	../routes/routers.py	/^def ctrlAct():$/;"	kind:function	line:37
 ctrlTree	../routes/routers.py	/^def ctrlTree():$/;"	kind:function	line:18
 ctrlUser	../routes/routers.py	/^def ctrlUser():$/;"	kind:function	line:28
-date	../models/mongoModel.py	/^    date = DateTimeField()$/;"	kind:variable	line:24
-date_modified	../models/mongoModel.py	/^    date_modified = DateTimeField(default=datetime.datetime.now)$/;"	kind:variable	line:15
-deleteTree	../controllers/tree.py	/^def deleteTree():$/;"	kind:function	line:10
+deleteTree	../controllers/tree.py	/^def deleteTree():$/;"	kind:function	line:29
 deleteUser	../controllers/user.py	/^def deleteUser():$/;"	kind:function	line:7
+familia	../models/mongoModel.py	/^    familia =  StringField(unique=False, required=False)$/;"	kind:variable	line:16
 findById	../models/mongoOP.py	/^    def findById(self, id):$/;"	kind:member	line:101
 forwarded_allow_ips	../config.py	/^forwarded_allow_ips = '*'$/;"	kind:variable	line:6
-getTree	../controllers/tree.py	/^def getTree():$/;"	kind:function	line:18
+getTree	../controllers/tree.py	/^def getTree():$/;"	kind:function	line:37
 getUser	../controllers/user.py	/^def getUser():$/;"	kind:function	line:15
 hello	../controllers/nothing.py	/^def hello():$/;"	kind:function	line:3
+info	../models/mongoModel.py	/^    info = StringField(unique=False, required=False)$/;"	kind:variable	line:22
+lat	../models/mongoModel.py	/^    lat = StringField(unique=False, required=True)$/;"	kind:variable	line:9
 list	../models/mongoOP.py	/^    def list(self):$/;"	kind:member	line:78
-listTrees	../controllers/tree.py	/^def listTrees():$/;"	kind:function	line:14
+listTrees	../controllers/tree.py	/^def listTrees():$/;"	kind:function	line:32
 listUsers	../controllers/user.py	/^def listUsers():$/;"	kind:function	line:11
-meta	../models/mongoModel.py	/^    meta = {'db_alias': 'user-db'}$/;"	kind:variable	line:21
+lng	../models/mongoModel.py	/^    lng = StringField(unique=False, required=True)$/;"	kind:variable	line:10
+luminosidade	../models/mongoModel.py	/^    luminosidade = StringField(unique=False, required=False)$/;"	kind:variable	line:20
 mongoModel.py	../models/mongoModel.py	1;"	kind:file	line:1
 mongoOP.py	../models/mongoOP.py	1;"	kind:file	line:1
-name	../models/mongoModel.py	/^    name = StringField()$/;"	kind:variable	line:13
+nome_cie	../models/mongoModel.py	/^    nome_cie = StringField(unique=False, required=True)$/;"	kind:variable	line:15
+nome_pop	../models/mongoModel.py	/^    nome_pop = StringField(unique=False, required=True)$/;"	kind:variable	line:14
 nothing.py	../controllers/nothing.py	1;"	kind:file	line:1
+origem	../models/mongoModel.py	/^    origem = StringField(unique=False, required=False)$/;"	kind:variable	line:18
 port	../wsgi.py	/^    port = int(os.environ.get("PORT", 5000))$/;"	kind:variable	line:10
 remove	../models/mongoOP.py	/^    def remove(self, id):$/;"	kind:member	line:74
 routers.py	../routes/routers.py	1;"	kind:file	line:1
 save	../models/mongoOP.py	/^    def save(self, dados):$/;"	kind:member	line:21
 secure_scheme_headers	../config.py	/^secure_scheme_headers = { 'X-Forwarded-Proto': 'https' }$/;"	kind:variable	line:7
-size	../models/mongoModel.py	/^    size = StringField(max_length=3, choices=SIZE)$/;"	kind:variable	line:16
-tags	../models/mongoModel.py	/^    tags = ListField(StringField(max_length=50))$/;"	kind:variable	line:18
+tags	../models/mongoModel.py	/^    tags = ListField( ReferenceField(Loc) )$/;"	kind:variable	line:23
 threads	../config.py	/^threads = int(os.environ.get('GUNICORN_THREADS', '1'))$/;"	kind:variable	line:4
-title	../models/mongoModel.py	/^    title = StringField(max_length=200, required=True)$/;"	kind:variable	line:14
 tree.py	../controllers/tree.py	1;"	kind:file	line:1
-user	../models/mongoModel.py	/^    user = ReferenceField(User)$/;"	kind:variable	line:25
 user.py	../controllers/user.py	1;"	kind:file	line:1
+va	../models/mongoModel.py	/^va = Tree.objects()$/;"	kind:variable	line:32
 workers	../config.py	/^workers = int(os.environ.get('GUNICORN_PROCESSES', '3'))$/;"	kind:variable	line:3
 wsgi.py	../wsgi.py	1;"	kind:file	line:1

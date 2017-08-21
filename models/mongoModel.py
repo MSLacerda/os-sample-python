@@ -30,7 +30,7 @@ class Tree(Document):
 
 Tree(nome_pop="nome", nome_cie="oiii").save()  # Saves in the default d
 va = Tree.objects()
-print (va.nome_pop)
+print (va[0].nome_pop)
 
 # with switch_db(User, 'archive-user-db') as User:
 #     User(name='Ross').save()  # Saves the 'archive-user-db'
