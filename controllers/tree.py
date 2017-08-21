@@ -3,37 +3,18 @@
 from models import mongoModel
 from bson.json_util import dumps
 
-# Metodo para salvar nova arvore
-def createTree(data):
-    # Documento
-    tree = mongoModel.Tree(nome_pop=data.nome_pop, );
-    response = {
-        "Error": False,
-        "Messange": 0
-    }
-    # Tenta Salvar o documento com os dados recebidos
-    try:
-        tree.save();
-        response = {
-            "Error": False,
-            "Message": "Tree added with success!"
-        }
-    except e as Exception:
-        response = {
-            "Error": True,
-            "Message": "Error: " + e
-        }
+bdtree = mongoOP.OpMongoDB('forestbd','trees')
+
+def createTree( dados):
+
+    return bdtree.save(dados)
     
-    return dumbs(response);
-    
-def deleteTree():
-    # TODO
+def deleteTree(id):
+    return bdtree.remove(id)
     
 def listTrees():
-    trees = mongoModel.Tree();
-    return dumps(trees.objects());
 
+    return bdtree.list()
     
-def getTree():
-    pass
-    # TODO
+def getTree(id):
+    return bdtree.findById(id)

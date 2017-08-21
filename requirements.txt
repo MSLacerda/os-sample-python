@@ -1,3 +1,6 @@
 Flask==0.12.2
+itsdangerous==0.24
 pymongo==3.4.0
+Flask_Cors==3.0.3
+Werkzeug==0.12.2
 mongoengine==0.13.0
