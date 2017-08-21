@@ -12,7 +12,7 @@ class Loc(Document):
 
 class Tree(Document):
     nome_pop = StringField(unique=False, required=True)
-    nome_cie = StringField(unique=False, required=True)
+    nome_cie = StringField(unique=False, required=False)
     familia =  StringField(unique=False, required=False)
     categoria= StringField(unique=False, required=False)
     origem = StringField(unique=False, required=False)
@@ -27,10 +27,10 @@ class Tree(Document):
 
 
 
-
-Tree(nome_pop="nome", nome_cie="oiii").save()  # Saves in the default d
-va = Tree.objects()
-print (va.nome_pop)
+teste = "teste"
+Tree("eita", "oi").save()  # Saves in the default d
+for va in Tree.objects():
+    print (va.nome_pop)
 
 # with switch_db(User, 'archive-user-db') as User:
 #     User(name='Ross').save()  # Saves the 'archive-user-db'
