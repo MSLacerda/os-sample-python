@@ -2,19 +2,18 @@
 # -*- coding: utf-8 -*-
 from models import mongoOP
 
+bdtree = mongoOP.OpMongoDB('forestbd','trees')
 
-def createTree():
-    pass
-    # TODO
+def createTree( dados):
+
+    return bdtree.save(dados)
     
-def deleteTree():
-    pass
-    # TODO
+def deleteTree(id):
+    return bdtree.remove(id)
     
 def listTrees():
-    mg = mongoOP.OpMongoDB('forestbd','trees')
-    return mg.list()
+
+    return bdtree.list()
     
-def getTree():
-    pass
-    # TODO
+def getTree(id):
+    return bdtree.findById(id)
