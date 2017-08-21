@@ -1,7 +1,7 @@
 #importando o documento Tree
 # -*- coding: utf-8 -*-
-from models import mongoModel
 from bson.json_util import dumps
+from models import mongoOP
 
 bdtree = mongoOP.OpMongoDB('forestbd','trees')
 
