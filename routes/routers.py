@@ -22,6 +22,7 @@ class ObjectIDConverter(BaseConverter):
 
 # Importando controller de teste
 from controllers import tree
+from controllers import user
 import json
 
 # Flass app
@@ -30,7 +31,11 @@ application.url_map.converters['objectid'] = ObjectIDConverter
 CORS(application)
 # Rota index para teste
 
-
+"""
+----------------------------------------------------
+                    TREE
+----------------------------------------------------
+"""
 @application.route("/tree", methods=['POST','GET'])
 # Função da rota index
 def ctrlTree():
@@ -38,14 +43,12 @@ def ctrlTree():
         res = tree.createTree(request.json)
         return jsonify(res)
 
-
     elif (request.method == 'GET'):
         res = tree.listTrees()
         return jsonify(res)
 
 
-
-@application.route('/tree/<idtree>',  methods=['GET', 'DELETE'])
+@application.route('/tree/<idtree>',  methods=['GET', 'DELETE', 'PUT', 'PATCH'])
 def getIdTree(idtree):
 
     if (request.method == "GET"):
@@ -57,17 +60,63 @@ def getIdTree(idtree):
         res = tree.deleteTree(idtree)
         return jsonify(res)
 
+    elif (request.method == 'PUT'):
+        res = tree.uploadTree(idtree,request.json)
+        return jsonify(res)
+
+    elif (request.method == 'PATCH'):
+
+        res = tree.addLoc(idtree, request.json)
+        return jsonify(res)
 
 
-@application.route("/user", methods=['POST','GET', 'DELETE'])
+"""
+----------------------------------------------------
+                    USER
+----------------------------------------------------
+"""
+
+
+@application.route("/user", methods=['POST','GET'])
+# Função da rota index
 def ctrlUser():
     if (request.method == 'POST'):
-        pass  # TODO
+        res = user.createUser(request.json)
+        return jsonify(res)
+
     elif (request.method == 'GET'):
-        return "This router works :)"
+        res = user.listUser()
+        return jsonify(res)
+
+
+@application.route('/user/<iduser>',  methods=['GET', 'DELETE', 'PUT', 'PATCH'])
+def getIdUser(iduser):
+
+    if (request.method == "GET"):
+        res = user.getUser(iduser)
+        return jsonify(res)
+
     elif (request.method == 'DELETE'):
-        pass #TODO 
-        
+        print(iduser)
+        res = user.deleteUser(iduser)
+        return jsonify(res)
+
+    elif (request.method == 'PUT'):
+        res = user.uploadUser(iduser,request.json)
+        return jsonify(res)
+
+    elif (request.method == 'PATCH'):
+        res = user.patchUser(iduser,request.json)
+        return jsonify(res)
+
+
+
+"""
+----------------------------------------------------
+                    ACTIVITIES
+----------------------------------------------------
+"""
+
 @application.route("/activities", methods=['POST','GET', 'DELETE'])
 def ctrlAct():
     if (request.method == 'POST'):

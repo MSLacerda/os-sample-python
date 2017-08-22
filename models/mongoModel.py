@@ -5,32 +5,23 @@ import datetime
 
 connect('proj', host='localhost', port=27017)
 
-class Loc(Document):
-    lat = StringField(unique=False, required=True)
-    lng = StringField(unique=False, required=True)
-
-
-class Tree(Document):
-    nome_pop = StringField(unique=False, required=True)
-    nome_cie = StringField(unique=False, required=False)
-    familia =  StringField(unique=False, required=False)
-    categoria= StringField(unique=False, required=False)
-    origem = StringField(unique=False, required=False)
-    clima = StringField(unique=False, required=False)
-    luminosidade = StringField(unique=False, required=False)
-    altura = StringField(unique=False, required=False)
-    info = StringField(unique=False, required=False)
-    tags = ListField( ReferenceField(Loc) )
-
+class User(Document):
+    email = StringField(unique=True, required=True)
+    nome = StringField(unique=False, required=True)
 
     # meta = {'db_alias': 'user-db'}
 
 
-
-teste = "teste"
-Tree("eita", "oi").save()  # Saves in the default d
-for va in Tree.objects():
-    print (va.nome_pop)
+#
+# teste = "teste"
+#
+# e = Tree("eita", "oi").save()
+# Tree().update()
+# Tree().delete()
+# Tree().objects(pk='')
+#
+# for va in Tree.objects():
+#     print (va.nome_pop)
 
 # with switch_db(User, 'archive-user-db') as User:
 #     User(name='Ross').save()  # Saves the 'archive-user-db'
