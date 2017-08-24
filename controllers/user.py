@@ -19,10 +19,8 @@ def patchUser(id, dados):
 def deleteUser(id):
     return dbuser.remove(id)
 
-
 def listUser():
     return dbuser.list()
-
 
 def getUser(id):
     return dbuser.findById(id)
