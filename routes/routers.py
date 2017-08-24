@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # Este modulo carrega todas as funções do flas
-from flask import jsonify, flash
+from flask import jsonify, flash, send_file
 from flask_cors import CORS
 from werkzeug.routing import BaseConverter, ValidationError
 from itsdangerous import base64_encode, base64_decode
@@ -32,7 +32,7 @@ ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 
 # Flass app
-application = Flask(__name__)
+application = Flask(__name__,  static_folder='uploads', static_url_path='')
 application.url_map.converters['objectid'] = ObjectIDConverter
 CORS(application)
 application.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -124,7 +124,6 @@ def getIdUser(iduser):
 ----------------------------------------------------
 """
 
-
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -145,12 +144,14 @@ def upload_file():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
 
-            print(filename)
-            
 
             file.save(os.path.join(application.config['UPLOAD_FOLDER'], filename))
-            return redirect(url_for('uploads',
-                                    filename=filename))
+            res = {
+                "completo" : os.path.join(application.config['UPLOAD_FOLDER'], filename),
+                "file_name" : filename
+                 }
+            return jsonify(res)
+
     return '''
     <!doctype html>
     <title>Upload new File</title>
@@ -162,6 +163,14 @@ def upload_file():
     '''
 
 
+
+@application.route('/get_file/<name>' )
+def get_file(name):
+    try:
+        return send_file('../uploads/'+ name,
+                         attachment_filename=name)
+    except Exception as e:
+        return str(e)
 
 
 
