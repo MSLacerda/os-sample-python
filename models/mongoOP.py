@@ -37,16 +37,17 @@ class OpMongoDB():
             # Faz um try catch para garantir inserção dos dados
             try:
 
-                inserted_id = self.collection.insert_one(dados).inserted_id
+                inserted_id = self.collection.insert_one(dados)
                 response = {
                     "Error": False,
                     "Menssage": "Objeto adicionado com sucesso!",
-                    "_id": (str(inserted_id))
+                    "_id": (str(inserted_id.inserted_id))
                 }
             except:
                 response = {
                     "error": True,
-                    "Menssage": "Error no processamento do serviço!"
+                    "Menssage": "Error no processamento do serviço!",
+                    "Dica" : "Possivelmente esse email já existe"
                 }
 
             #--------------------------
@@ -55,6 +56,7 @@ class OpMongoDB():
             return response
             #-------------------------- 
 
+<<<<<<< HEAD
         else:
             # Caso não exista id é feito uma atualização com base
             # no id recebido e mais uma vez com segurança que os dados 
@@ -71,14 +73,68 @@ class OpMongoDB():
                     "error": True,
                     "Menssage": "Error ao processar servicço"
                 }
-
-            #--------------------------
-            # Resposta do servidor
-            #--------------------------
-            return response
-            #-------------------------- 
+=======
+>>>>>>> b87e06d3d1df4db58b4e07ae6d08220fd625ab3b
 
 
+
+    def upload(self, id, dados):
+        # Caso não exista id é feixo uma atualização com base
+        # no id recebido e mais uma vez com segurança que os dados
+        # sejam atualizados
+
+        # try:
+        #     del dados['key']
+        # except:
+        #     pass
+
+        try:
+            # self.collection.replace_one({'_id': ObjectId(id)}, {"$set": dados}, upsert=False)
+            res = self.collection.replace_one({'_id': ObjectId(id)}, dados, upsert=False).raw_result
+            response = {
+                "Error": False,
+                "Menssage": "Arquivo atualizado com sucesso",
+                "data" : res
+            }
+        except:
+            response = {
+                "error": True,
+                "Menssage": "Error ao processar servicço"
+            }
+
+        # --------------------------
+        # Resposta do servidor
+        # --------------------------
+        return response
+        # --------------------------
+
+
+    def patch(self, id, dados):
+        # Caso não exista id é feixo uma atualização com base
+        # no id recebido e mais uma vez com segurança que os dados
+        # sejam atualizados
+
+
+        try:
+
+            res = self.collection.update({'_id': ObjectId(id)}, {"$set": dados}, upsert=True)
+
+            response = {
+                "Error": False,
+                "Menssage": "Arquivo atualizado com sucesso",
+                "data" : res
+            }
+        except:
+            response = {
+                "error": True,
+                "Menssage": "Error ao processar serviço",
+            }
+
+        # --------------------------
+        # Resposta do servidor
+        # --------------------------
+        return response
+        # --------------------------
 
 
 
@@ -136,8 +192,19 @@ class OpMongoDB():
 
 
     def findById(self, id):
-        res = self.collection.find_one({"_id": ObjectId(id)})
-        res["_id"] = str(res['_id'])
+        try:
+            res = self.collection.find_one({"_id": ObjectId(id)})
+            res["_id"] = str(res['_id'])
 
-        return res
+            response = {
+                "Error": False,
+                "data": res
+            }
+        except:
+            response = {
+                "Error": True,
+                "Menssage": "Error no serviço "
+            }
+
+        return response
 
