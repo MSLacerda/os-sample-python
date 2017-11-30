@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
 
 # Este modulo carrega todas as funções do flas
-from flask import Flask, request, jsonify
-from flask_cors import CORS, cross_origin
-
-from flask import Flask
+from flask import jsonify, flash, send_file
+from flask_cors import CORS
 from werkzeug.routing import BaseConverter, ValidationError
 from itsdangerous import base64_encode, base64_decode
 from bson.objectid import ObjectId
 from bson.errors import InvalidId
+import os
+from flask import Flask, request, redirect, url_for
+from werkzeug.utils import secure_filename
+
 
 class ObjectIDConverter(BaseConverter):
     def to_python(self, value):
@@ -23,13 +25,18 @@ class ObjectIDConverter(BaseConverter):
 # Importando controller de teste
 from controllers import tree
 from controllers import user
-import json
+
+
+UPLOAD_FOLDER = 'uploads/'
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+
 
 # Flass app
-application = Flask(__name__)
+application = Flask(__name__,  static_folder='uploads', static_url_path='')
 application.url_map.converters['objectid'] = ObjectIDConverter
 CORS(application)
-# Rota index para teste
+application.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 
 """
 ----------------------------------------------------
@@ -113,21 +120,57 @@ def getIdUser(iduser):
 
 """
 ----------------------------------------------------
-                    ACTIVITIES
+                    UPLOADS
 ----------------------------------------------------
 """
 
-@application.route("/activities", methods=['POST','GET', 'DELETE'])
-def ctrlAct():
-    if (request.method == 'POST'):
-        pass  # TODO
-    elif (request.method == 'GET'):
-        return "This router works :)"
-    elif (request.method == 'DELETE'):
-        pass #TODO 
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@application.route('/uploads' , methods=['POST','GET'])
+def upload_file():
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        # if user does not select file, browser also
+        # submit a empty part without filename
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+
+
+            file.save(os.path.join(application.config['UPLOAD_FOLDER'], filename))
+            res = {
+                "completo" : os.path.join(application.config['UPLOAD_FOLDER'], filename),
+                "file_name" : filename
+                 }
+            return jsonify(res)
+
+    return '''
+    <!doctype html>
+    <title>Upload new File</title>
+    <h1>Upload new File</h1>
+    <form method=post enctype=multipart/form-data>
+      <p><input type=file name=file>
+         <input type=submit value=Upload>
+    </form>
+    '''
 
 
 
+@application.route('/get_file/<name>' )
+def get_file(name):
+    try:
+        return send_file('../uploads/'+ name,
+                         attachment_filename=name)
+    except Exception as e:
+        return str(e)
 
 
 
